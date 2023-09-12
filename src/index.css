@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  
+}
+
+.bodyPart-card {
+  transition: transform 0.2s;
+}
+
+.bodyPart-card:hover {
+  transform: scale(1.1);
+}
+
+.react-horizontal-scrolling-menu {
+  overflow-x: hidden;
+}
+
+.exercise-card {
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  transform: scale(1,1)
+  transition: 0.3s all ease-in-out
+}
+
+.exercise-card a {
+  text-decoration: none;
+}
+
+.detail-image{
+  width: 500px;
+  height: 500px;
+  margin-right: 6rem;
+}
+
+
+.exercise-video{
+  width: 400px;
+  height: 350px;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px; 
+  cursor: pointer;
+  z-index: 1;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px; 
+  cursor: pointer;
+  z-index: 1;
+}
+
+
