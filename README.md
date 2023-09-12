@@ -26,7 +26,7 @@
 ## 4. 주요 기능
 
 ### 4.1. 운동 검색하기
-<img src="https://user-images.githubusercontent.com/90593162/228273346-be1e577f-6f4b-42ba-abee-a70725377415.gif">
+<img src="">
 
 <details>
 <summary>코드 보기</summary>
@@ -61,7 +61,7 @@ const handleSearch = async () => {
 
 
 ### 4.2. 운동 세부 정보 보기
-<img src="https://user-images.githubusercontent.com/90593162/228281628-fc6c9c57-4427-4754-8708-4d84340ffdae.gif">
+<img src="">
 <details>
 <summary>코드 보기</summary>
 <div markdown="1">
@@ -89,7 +89,7 @@ setExerciseDetail(exerciseDetailData);
 - 사용자가 운동 카드를 클릭하면 그 특정 운동에 대한 자세한 정보를 볼 수 있습니다. 운동 세부 정보에는 운동 이름, 대상 근육, 부위 및 필요한 장비가 포함됩니다. ExerciseDetail.jsx 컴포넌트가 이 정보를 가져오고 표시합니다.
   
 ### 4.3. 특정 운동 관련 Youtube 비디오 보기
-<img src="https://user-images.githubusercontent.com/90593162/228287268-be919905-beb5-46f7-92e4-a57804976196.gif">
+<img src="">
 
 <details>
 <summary>코드 보기</summary>
@@ -106,7 +106,7 @@ setExerciseDetail(exerciseDetailData);
 - 특정 운동과 관련된 유투브 비디오를 시청할 수 있습니다. 비디오 썸네일과 제목을 웹페이지에 표기해 클릭하면 유투브 url로 새 페이지와 함께 열립니다. ExerciseVideos.jsx 컴포넌트가 이 역할을 합니다. 
   
 ### 4.4. 유사한 운동 표시
-<img src="https://user-images.githubusercontent.com/90593162/228441762-801d7f51-566f-42f1-9a29-be7a41bf7083.gif">
+<img src="">
 
 <details>
 <summary>코드 보기</summary>
