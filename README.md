@@ -121,6 +121,7 @@ setExerciseDetail(exerciseDetailData);
 </details>
 
 - 사용자는 대상 근육이나 장비와 관련된 유사한 운동들의 목록을 볼 수 있습니다. SimilarExercises.jsx 컴포넌트가 이 역할을 하고 Scrollbar.jsx 컴포넌트를 재활용해 목록을 표시합니다. Scrollbar.jsx는 재사용 되어 웹사이트의 일관성을 제공합니다.
+  
 
 ### 5. 문제 해결
 🔍 "react-horizontal-scrolling-menu" 라이브러리 사용 중 문제 발생
