@@ -122,3 +122,177 @@ setExerciseDetail(exerciseDetailData);
 
 - 사용자는 대상 근육이나 장비와 관련된 유사한 운동들의 목록을 볼 수 있습니다. SimilarExercises.jsx 컴포넌트가 이 역할을 하고 Scrollbar.jsx 컴포넌트를 재활용해 목록을 표시합니다. Scrollbar.jsx는 재사용 되어 웹사이트의 일관성을 제공합니다.
 
+### 5. 문제 해결
+🔍 "react-horizontal-scrolling-menu" 라이브러리 사용 중 문제 발생
+
+- 문제 상황
+"react-horizontal-scrolling-menu" 라이브러리를 사용하여 스크롤 메뉴를 구현하려고 했으나, 제대로 작동하지 않았습니다.
+
+- 해결 방법
+구글링을 통해 찾아낸 해결 방법은 "react-horizontal-scrolling-menu" 라이브러리의 기본 스타일 시트를 import하는 것이었습니다:
+
+```
+import "react-horizontal-scrolling-menu/dist/styles.css";
+```
+
+그런데 이렇게 하니, 기본 설정으로 못생긴 스크롤바가 페이지에 나타났습니다. 이는 원치 않는 결과였기 때문에 이 문제를 해결하기 위해 커스텀 CSS를 추가하여 기본 스크롤바를 숨겼습니다:
+
+```
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+  display: none;
+}
+.react-horizontal-scrolling-menu--scroll-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+```
+코드 추가 후 페이지에 못생긴 기본 스타일의 스크롤바가 더 이상 나타나지 않았고, 사용자 경험이 향상되었습니다.
+
+
+해결방법: 구글링을 통해 알아낸 해결 방법은 "react-horizontal-scrolling-menu" 라이브러리의 스타일 시트를 다음과 같이 추가하는 것이었습니다.
+```
+import "react-horizontal-scrolling-menu/dist/styles.css";
+```
+하지만 이 방법을 사용하면 기본 설정으로 못생긴 스크롤바가 표시되었습니다. 이 문제를 해결하기 위해 다음과 같이 커스텀 CSS를 추가했습니다.
+```
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+  display: none;
+}
+.react-horizontal-scrolling-menu--scroll-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+```
+이 코드를 추가 후 페이지에 못생긴 스크롤바가 더 이상 나타나지 않았습니다.
+ 
+🔍 Search.jsx 컴포넌트안에 input과 button 배치 문제
+
+- 문제 상황
+처음에는 Search.jsx 컴포넌트에서 검색 입력란(input)과 버튼을 옆으로 배치하기 위해 CSS의 display: absolute 속성을 사용하였습니다. 그러나 이렇게 하니, 화면에서 가운데가 아닌 오른쪽으로 치우친 위치에 요소들이 표시되는 문제가 발생하였습니다.
+
+- 원인 분석
+display: absolute는 요소를 일반적인 문서 흐름에서 벗어나게 하고, 가장 가까운 위치 지정된 조상(기본값은 body)에 대해 상대적으로 배치합니다. 따라서, 화면 크기나 다른 요소의 위치 변화에 따라 예상하지 못한 결과를 초래할 수 있습니다.
+
+- 해결 방법
+input에 display: relative를 설정하고, 버튼을 display: absolute로 설정하여 레이아웃을 조정하는 대신, flex를 사용하여 가운데에 정렬되도록 변경했습니다. 아래는 수정된 코드입니다:
+
+```
+<Box display="flex">
+        <TextField
+          sx={{
+            input: {
+              fontWeight: "700",
+              border: "none",
+              borderRadius: "4px",
+            },
+            width: { lg: "1100px", xs: "500px" },
+            backgroundColor: "#fff",
+            borderRadius: "40px",
+          }}
+          height="76px"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value.toLowerCase());
+          }}
+          placeholder="Search Exercises"
+          type="text"
+        />
+        <Button
+          sx={{
+            bgcolor: "#FF2625",
+            color: "#fff",
+            textTransform: "none",
+            width: { lg: "175px", xs: "80px" },
+            fontSize: { lg: "20px", xs: "14px" },
+            height: "56px",
+          }}
+          onClick={handleSearch}
+        >
+          Search
+        </Button>
+      </Box>
+```
+
+위의 수정된 코드에서, <Box> 컴포넌트의 display 속성을 flex로 설정하여 자식 요소들(여기서는 <TextField>와 <Button>)이 가로 방향으로 배치되고, 자동으로 중앙 정렬되도록 하였습니다. 
+이 변경 후, 화면에서 요소들이 치우쳐 보이는 문제가 해결되었습니다.
+
+🔍 검색창에서 운동 검색 시 undefined가 결과로 나옴
+
+- 문제 상황
+검색창에서 운동을 검색할 때 'undefined'라는 결과가 나타나는 문제가 발생했습니다.
+
+- 원인 분석
+이 문제의 원인을 파악하기 위해, 우리는 먼저 데이터를 가져오는 fetchData 함수에서 데이터가 제대로 전달되고 있는지 디버깅을 진행하였습니다. 그 결과, 검색 기능을 수행하는 코드 부분에서 문제가 있음을 확인하였습니다.
+기존 코드에서 다음과 같은 부분에서 문제가 발생하였습니다:
+
+```
+const searchedExercises = exercisesData.filter((exercise) => {
+  // Exercise data filtering code
+});
+```
+
+위의 코드 부분은 exercisesData 배열의 각 요소(운동 정보)에 대해 특정 조건에 맞는 요소들만 선택하여 새로운 배열(searchedExercises)를 만듭니다. 여기서 조건은 운동 정보의 특정 필드(name, target, equipment, bodyPart)에 검색어가 포함되어 있는지를 확인하는 것입니다.
+그런데 이 때, 해당 필드들이 문자열인지 확인하지 않고 바로 toLowerCase() 메서드를 호출하여 소문자로 변환하려고 했습니다. 만약 해당 필드값이 문자열이 아니라면(undefined나 null 등), 이 메서드 호출은 에러를 발생시킵니다.
+이 코드 부분에서 exercisesData 데이터가 제대로 가져와졌지만, filter 함수를 통해 검색어를 포함한 결과를 출력할 때 문제가 발생했습니다. 원인은 exercise.name, exercise.target, exercise.equipment, exercise.bodyPart 등의 필드들이 문자열인지 확인하지 않고 바로 toLowerCase() 메서드를 호출하여 발생한 문제였습니다. 
+
+- 해결 방법
+각 필드값이 문자열인 경우에만 toLowerCase() 메서드를 호출하도록 코드를 수정하여 이 문제를 해결하였습니다:
+
+```
+      const searchedExercises = exercisesData.filter((exercise) => {
+        // Ensure exercise.name is a string before calling toLowerCase()
+        const exerciseName =
+          typeof exercise.name === "string" ? exercise.name.toLowerCase() : "";
+        const target =
+          typeof exercise.target === "string"
+            ? exercise.target.toLowerCase()
+            : "";
+        const equipment =
+          typeof exercise.equipment === "string"
+            ? exercise.equipment.toLowerCase()
+            : "";
+        const bodyPart =
+          typeof exercise.bodyPart === "string"
+            ? exercise.bodyPart.toLowerCase()
+            : "";
+
+        return (
+          exerciseName.includes(search) ||
+          target.includes(search) ||
+          equipment.includes(search) ||
+          bodyPart.includes(search)
+        );
+      });
+```
+위의 수정된 코드에서, 우리는 각 필드값이 문자열인지 확인하고, 문자열인 경우에만 toLowerCase() 메서드를 호출하여 소문자로 변환합니다. 그렇지 않은 경우(즉, 필드값이 undefined나 null 등일 경우), 빈 문자열("")을 사용합니다. 이렇게 수정한 후, 검색 기능은 정상적으로 작동하였고 'undefined' 문제는 더 이상 발생하지 않았습니다.
+
+
+🔍 "Uncaught TypeError: exercises.slice is not a function" 에러 해결
+
+- 문제 상황
+'Exercises' 컴포넌트에서 특정 범위의 운동을 선택하여 출력하려고 할 때 다음과 같은 코드를 사용하였습니다:
+
+```
+const currentExercises = exercises.slice(
+  indexOfFirstExercise,
+  indexOfLastExercise
+);
+```
+
+하지만 이 코드를 실행할 때마다 "Uncaught TypeError: exercises.slice is not a function"이라는 에러가 발생하였습니다.
+
+- 원인 분석
+JavaScript에서 slice 메소드는 배열에 대해서만 사용할 수 있습니다. 따라서 exercises 가 배열이 아닌 경우 위와 같은 에러 메시지가 나타납니다.
+제 코드의 경우 exercises는 객체(object)였기 때문에 slice 함수를 호출할 수 없었습니다.구글링을 해보고 디버깅을 해 원인을 찾게 되었습니다.
+
+- 해결 방법
+받아온 데이터(exercises)가 객체이기 때문에, 데이터를 배열로 변환하여야 합니다. JavaScript에서 제공하는 Object.values() 메소드를 사용하여 객체의 모든 속성 값을 포함하는 배열을 생성할 수 있습니다:
+
+```
+const exercisesArray = Object.values(exercises);
+
+const currentExercises = exercisesArray.slice(
+  indexOfFirstExercise,
+  indexOfLastExercise
+);
+```
