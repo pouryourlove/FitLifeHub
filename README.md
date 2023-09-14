@@ -26,7 +26,7 @@
 ## 4. 주요 기능
 
 ### 4.1. 운동 검색하기
-<img src="https://github.com/pouryourlove/ultimate-react-course-main/assets/90593162/60027f66-a28e-4b2a-98a6-b05b1067a9d5">
+<img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/d11d3187-41d2-4918-9cf2-cb6a14338619">
 
 <details>
 <summary>코드 보기</summary>
