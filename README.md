@@ -60,8 +60,64 @@ const handleSearch = async () => {
 ### 4.2. 운동 부위 클릭으로 관련 운동 보기
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/0d6c854b-9775-4627-9f17-34bcb40b6a80">
 
+<details>
+<summary>코드 보기</summary>
+<div markdown="1">
+
+```
+<Stack
+  ...
+  onClick={() => {
+    setBodyPart(item);
+    window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
+  }}
+>
+    
+```
+</div>
+</details>
+
+- 사용자가 특정 부위를 선택하면 그 부위에 대한 연관된 운동을 보여주는 기능입니다. BodyPart.jsx 파일에서 이 기능을 확인할 수 있습니다. Stack 컴포넌트는 각각의 운동 부위 카드를 나타내며, 이 카드에 onClick 핸들러를 설정하여 특정 카드가 클릭될 때 setBodyPart(item) 함수를 호출합니다. 이 함수는 상태를 변경하여 선택된 body part와 관련된 운동만 필터링됩니다.
+
 ### 4.3. 운동 pagination
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/0255d7fc-8a71-4a35-ae8b-df251ca8d4b4">
+
+<details>
+<summary>코드 보기</summary>
+<div markdown="1">
+
+```
+const [currentPage, setCurrentPage] = useState(1);
+const exercisesPerPage = 6;
+
+//index of per page
+const indexOfLastExercise = currentPage * exercisesPerPage;
+const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
+const exercisesArray = Object.values(exercises);
+const currentExercises = exercisesArray.slice(
+indexOfFirstExercise,
+indexOfLastExercise
+);
+
+const paginate = (e, value) => {
+    setCurrentPage(value);
+
+    window.scrollTo({ top: 2000, behaviour: "smooth" });
+  };
+
+.
+.
+.
+
+<Pagination
+...
+onChange={paginate}
+/>
+```
+</div>
+</details>
+
+- Pagination을 사용하여 사용자가 한 페이지에서 볼 수 있는 데이터의 양을 제한하고, 다음 또는 이전 버튼을 클릭하여 다른 페이지로 넘어갈 수 있도록 합니다.Exercises.jsx 파일에서 확인할 수 있는데, 처음에 currentPage, exercisesPerPage, 그리고 currentExercises라는 상태 변수들을 설정합니다. 여기서 currentExercises은 현재 페이지에 표시되어야 할 데이터입니다. 그리고 나서 <Pagination /> 컴포넌트의 onChange 속성으로 paginate 함수를 연결해줍니다. paginate 함수 내부에서는 새로운 페이지 번호(value)로 setCurrentPage(value)를 호출함으로써 현재 페이지 상태를 업데이트하고 새롭게 렌더링되도록 합니다.
 
 ### 4.3. 운동 세부 정보 보기
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/ade6d455-b535-45fd-ac9b-6ded2ede3068">
