@@ -1,6 +1,6 @@
 # :pushpin: FitLifeHub
 > FitLifeHub은 운동에 관심 있는 사용자들이 운동 자세, 근육 자극 지점, 그리고 필요한 장비에 대해 자세히 이해할 수 있도록 도와주는 웹페이지입니다.
->https://fitlifehubproject.netlify.app
+><https://fitlifehubproject.netlify.app>
 
 </br>
 
@@ -277,3 +277,54 @@ const currentExercises = exercisesArray.slice(
   indexOfLastExercise
 );
 ```
+
+🔍 Detail 컴포넌트에서 이미지 로딩 문제
+
+- 문제 상황:
+'Detail' 컴포넌트에서 아래와 같이 이미지를 로딩하려고 했습니다:
+```
+<img src={gifUrl} alt={name} loading="lazy" className="detail-image" />
+```
+그러나, 예상과 달리 이미지가 제대로 불러와지지 않았습니다.
+
+- 원인 분석:
+문제를 파악하기 위해 먼저 ExerciseDetail 컴포넌트로 디버깅을 진행하여 데이터가 올바르게 전달되고 있는지 확인하였습니다. 그 결과, 에러 메시지 "{message: 'Endpoint '/exercises/0001' does not exist'}"가 나타났습니다. 이 메시지는 요청한 API 엔드포인트가 존재하지 않음을 의미합니다.
+
+- 해결 방법:
+API 문서를 다시 확인한 결과, 정확한 URL 경로를 사용해야 함을 알 수 있었습니다. 따라서 아래와 같이 코드를 수정하여 문제를 해결하였습니다:
+
+```
+ const exerciseDetailData = await fetchData(
+        `${exerciseDbUrl}/exercises/exercise/${id}`,
+        exerciseOptions
+      );
+```
+위의 수정된 코드에서는 URL 경로에 "exercise" 대신 "exercises"라는 단어를 사용하여 올바른 API 엔드포인트에 데이터 요청을 보냈습니다. 이렇게 수정한 후 데이터가 올바르게 받아와져 이미지 로딩 문제도 해결되었습니다. API 요청 전 URL 경로 및 엔드포인트를 반드시 꼼꼼하게 확인해야겠다는 생각이 들었습니다.
+
+🔍 ExerciseDetails 컴포넌트에서 Scrollbar 컴포넌트를 재사용 오류
+
+- 문제 상황:
+ExerciseDetails 컴포넌트에서 Scrollbar 컴포넌트를 재사용하려고 하였으나, 화면에서 스크롤 기능이 제대로 작동하지 않았습니다. 화면 아래에 default 스크롤바가 생기고 scrollbar 컴포넌트에 작성해둔 오른쪽 왼쪽 화살표를 클릭해도 화면이 다음으로 넘어가지 않았습니다.
+
+- 원인 분석:
+Scrollbar 컴포넌트 자체에 문제가 있는지 확인하기 위해 다른 부분에서의 재사용 상황을 살펴보았으나 이 컴포넌트 자체에는 아무런 문제가 없었습니다. 따라서 ExerciseDetails 자체에서 일어나는 오류라고 판단하였으며, 특정 CSS 설정 때문일 가능성을 생각하여 분석하였습니다.
+
+- 해결 방법:
+Scroll의 커스텀 CSS 파일 내부를 읽어본 결과 scroll container의 넓이와 높이를 따로 설정하지 않았다는 사실을 알게 되었습니다. 그래서 아래와 같은 코드를 추가하였습니다:
+
+```
+.react-horizontal-scrolling-menu--scroll-container {
+  width: 1600px;
+  height: 600px;
+}
+```
+위와 같은 변경을 통해 Scrollbar 컴포넌트가 ExerciseDetails 컴포넌트에서 정상적으로 작동하는 것을 확인할 수 있었습니다. 
+
+
+## 6. 회고 / 느낀점
+
+처음으로 rapid API와 material UI를 사용한 이번 프로젝트는 매우 유익한 경험이었습니다. 평소에 들어보기만 하던 기술들을 실제로 적용해보며 새로운 지식을 습득할 수 있었습니다. 더욱이 이번 프로젝트는 제가 개인적으로 관심 있는 헬스 주제였기 때문에, 열정적으로 참여할 수 있었습니다.
+
+API를 활용하여 실제 데이터를 웹 페이지에 반영하는 과정은 어려움도 겪었지만, 그 결과물을 보며 큰 만족감을 느꼈습니다. API 데이터가 처음에는 제대로 fetch되지 않아 많은 오류를 겪고 시간도 많이 소요되었습니다. 하지만 스스로 디버깅하면서 문제를 해결하는 과정에서, 오류 해결 방법과 디버깅 기술에 대해 배울 수 있었습니다.
+
+이러한 경험은 앞으로 프로젝트에서 오류가 발생했을 때 차근차근 디버깅하여 문제를 해결하는 능력을 기르는 계기가 되었다고 생각합니다.
