@@ -60,6 +60,8 @@ const handleSearch = async () => {
 ### 4.2. 운동 부위 클릭으로 관련 운동 보기
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/0d6c854b-9775-4627-9f17-34bcb40b6a80">
 
+### 4.3. 운동 pagination
+<img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/0255d7fc-8a71-4a35-ae8b-df251ca8d4b4">
 
 ### 4.3. 운동 세부 정보 보기
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/ade6d455-b535-45fd-ac9b-6ded2ede3068">
