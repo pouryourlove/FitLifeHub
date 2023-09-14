@@ -25,7 +25,7 @@
 
 ## 4. 주요 기능
 
-### 4.1. 운동 검색하기
+### 4.1. 운동 검색창에 검색하기
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/d11d3187-41d2-4918-9cf2-cb6a14338619">
 
 <details>
@@ -57,11 +57,12 @@ const handleSearch = async () => {
 
 - 사용자들은 이름, 자극 근육, 장비, 또는 부위에 따라 운동을 검색할 수 있습니다. 사용자의 검색 쿼리에 맞게 ExerciseDB API에서 데이터를 가져와서 원하는 운동을 필터링할 수 있습니다. 검색 기능을 처리하는 코드는 Search.jsx 컴포넌트에 있습니다. 
 
+### 4.2. 운동 부위 클릭으로 관련 운동 보기
+<img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/0d6c854b-9775-4627-9f17-34bcb40b6a80">
 
 
-
-### 4.2. 운동 세부 정보 보기
-<img src="">
+### 4.3. 운동 세부 정보 보기
+<img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/ade6d455-b535-45fd-ac9b-6ded2ede3068">
 <details>
 <summary>코드 보기</summary>
 <div markdown="1">
@@ -89,7 +90,7 @@ setExerciseDetail(exerciseDetailData);
 - 사용자가 운동 카드를 클릭하면 그 특정 운동에 대한 자세한 정보를 볼 수 있습니다. 운동 세부 정보에는 운동 이름, 대상 근육, 부위 및 필요한 장비가 포함됩니다. ExerciseDetail.jsx 컴포넌트가 이 정보를 가져오고 표시합니다.
   
 ### 4.3. 특정 운동 관련 Youtube 비디오 보기
-<img src="">
+<img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/50aba1cd-6791-4810-8aed-5cf44cc69559">
 
 <details>
 <summary>코드 보기</summary>
@@ -106,7 +107,7 @@ setExerciseDetail(exerciseDetailData);
 - 특정 운동과 관련된 유투브 비디오를 시청할 수 있습니다. 비디오 썸네일과 제목을 웹페이지에 표기해 클릭하면 유투브 url로 새 페이지와 함께 열립니다. ExerciseVideos.jsx 컴포넌트가 이 역할을 합니다. 
   
 ### 4.4. 유사한 운동 표시
-<img src="">
+<img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/c0146e60-f006-492c-982c-8c8cded247cb">
 
 <details>
 <summary>코드 보기</summary>
