@@ -1,6 +1,6 @@
 # :pushpin: FitLifeHub
 > FitLifeHub은 운동에 관심 있는 사용자들이 운동 자세, 근육 자극 지점, 그리고 필요한 장비에 대해 자세히 이해할 수 있도록 도와주는 웹페이지입니다.
-><https://fitlifehubproject.netlify.app>
+><https://fitlifehubprojectdeploy.netlify.app/>
 
 </br>
 
