@@ -387,3 +387,24 @@ Scroll의 커스텀 CSS 파일 내부를 읽어본 결과 scroll container의 �
 API를 활용하여 실제 데이터를 웹 페이지에 반영하는 과정은 어려움도 겪었지만, 그 결과물을 보며 큰 만족감을 느꼈습니다. API 데이터가 처음에는 제대로 fetch되지 않아 많은 오류를 겪고 시간도 많이 소요되었습니다. 하지만 스스로 디버깅하면서 문제를 해결하는 과정에서, 오류 해결 방법과 디버깅 기술에 대해 배울 수 있었습니다.
 
 이러한 경험은 앞으로 프로젝트에서 오류가 발생했을 때 차근차근 디버깅하여 문제를 해결하는 능력을 기르는 계기가 되었다고 생각합니다.
+
+## 7.컴포넌트 도식화
+
+```
+Home
+ ├─ Hero
+ ├─ Search
+ └─ Exercises
+      ├─ ExerciseCard
+      ├─ BodyPart
+      ├─ Scrollbar
+      └─ Loader (for displaying loading state)
+          └─ (conditionally displayed based on data fetching status)
+
+ExerciseDetail
+ ├─ Detail
+ ├─ ExerciseVideos
+ └─ SimilarExercises
+      ├─ Scrollbar
+          └─ExerciseCard
+```
