@@ -1,7 +1,8 @@
 import { Stack, Typography } from "@mui/material";
 import Icon from "../assets/icons/dumbbell.png";
+import { fetchData, exerciseOptions } from "../utils/fetchData";
 
-const BodyPart = ({ item, setBodyPart, bodyPart }) => {
+const BodyPart = ({ item, setBodyPart, bodyPart, setExercises }) => {
   return (
     <Stack
       type="button"
@@ -17,9 +18,18 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
         cursor: "pointer",
         marginTop: "100px",
       }}
-      //click the specific card
       onClick={() => {
         setBodyPart(item);
+        if (item === "all") {
+          const fetchAllExercises = async () => {
+            const allExercises = await fetchData(
+              "https://exercisedb.p.rapidapi.com/exercises",
+              exerciseOptions
+            );
+            setExercises(allExercises);
+          };
+          fetchAllExercises();
+        }
         window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
       }}
     >

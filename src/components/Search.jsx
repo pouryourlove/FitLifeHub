@@ -108,6 +108,7 @@ const Search = ({ setExercises, bodyPart, setBodyPart }) => {
           bodyPart={bodyPart}
           setBodyPart={setBodyPart}
           isBodyParts
+          setExercises={setExercises}
         />
       </Box>
     </Stack>
