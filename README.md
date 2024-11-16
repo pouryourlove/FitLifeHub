@@ -383,6 +383,9 @@ Scroll의 커스텀 CSS 파일 내부를 읽어본 결과 scroll container의 �
 ```
 위와 같은 변경을 통해 Scrollbar 컴포넌트가 ExerciseDetails 컴포넌트에서 정상적으로 작동하는 것을 확인할 수 있었습니다. 
 
+🔍 운동 검색 후 카테고리 버튼이 작동안하는 오류
+[블로그 포스팅](https://velog.io/@pouryourlove/%EC%9A%B4%EB%8F%99-%EA%B2%80%EC%83%89-%ED%9B%84-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC-%EB%B2%84%ED%8A%BC-%EC%9E%91%EB%8F%99%EC%95%88%ED%95%98%EB%8A%94-%EC%98%A4%EB%A5%98#%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC-%EC%B4%88%EA%B8%B0%ED%99%94)
+
 ## 6. 성능 최적화
 - 이미지 레이지 로딩을 구현하여 초기 로딩 속도를 개선했습니다.
 - 페이지네이션을 구현하여 대량의 데이터를 효율적으로 관리하고 렌더링했습니다.
