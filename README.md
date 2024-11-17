@@ -5,31 +5,46 @@
 </br>
 
 ## 1. 프로젝트 소개 & 목표
-  - 최근 헬스에 관심을 가진 '헬린이'로서, 정확한 운동 자세와 근육 자극 지점에 대한 지식의 필요성을 체감했습니다. 이 경험을 바탕으로, 다른 초보자들에게도 도움이 될 수 있는 웹 애플리케이션을 개발하고자 했습니다.
-  - 사용자들에게 정확한 운동 정보를 제공하여 효과적이고 안전한 운동을 돕습니다.
-  - React와 관련 라이브러리들을 실제 프로젝트에 적용하여 프론트엔드 개발 능력을 향상시킵니다.
-  - 외부 API를 활용하여 실시간 데이터를 효과적으로 처리하고 표시하는 방법을 학습합니다.
 
-## 3. 사용 기술
+### 기획 의도
+헬스를 처음 시작하면서 정확한 자세와 운동 방법에 대한 정보가 절실했음. 같은 고민을 하는 다른 헬린이들을 위해 운동 정보를 쉽게 찾아볼 수 있는 웹 서비스를 만들고자 함.
 
-  - 프론트엔드 개발: React.js
-     - 선택 이유: 컴포넌트 기반 구조로 재사용성이 높고, Virtual DOM을 통         한 효율적인 렌더링이 가능합니다.
-  -  라우팅: React Router
-     - 선택 이유: React 애플리케이션에서 페이지 간 이동을 쉽게 구현할 수         있습니다.
-  -  UI 프레임워크: Material-UI
-     - 선택 이유: 깔끔한 컴포넌트를 쉽게 사용할 수 있어 개발 속도를 높일          수 있습니다.
-  -  가로 스크롤 메뉴: react-horizontal-scrolling-menu
-     - 선택 이유: 다양한 운동 정보를 직관적으로 탐색할 수 있는 UI를 제공합        니다.
-  -  로딩 표시기: react-loader-spinner
-     - 선택 이유: 데이터 로딩 중 사용자 경험을 개선하기 위해 사용했습니다.
-  -  API: Rapid API의 ExerciseDB와 Youtube Search API
-     - 선택 이유: 풍부한 운동 데이터와 관련 영상을 제공받아 애플리케이션의        정보 신뢰도를 높일 수 있습니다.
+### 주요 목표
+- 운동 초보자들이 쉽게 이해할 수 있는 운동 가이드 제공
+- 운동별 정확한 자세와 타겟 근육 정보 제공
+- 관련 운동 영상을 통한 시각적 학습 지원
+
+### 기술적 목표
+- React와 Material-UI를 활용한 모던 웹 애플리케이션 구현
+- REST API를 활용한 실시간 데이터 처리 경험
+- 재사용 가능한 컴포넌트 설계 및 구현
+  
+## 2. 사용 기술
+
+### 프론트엔드 핵심 기술
+| 기술 | 버전 | 사용 목적 |
+|------|------|-----------|
+| React.js | 18.0.0 | • 컴포넌트 기반 개발로 재사용성 향상<br>• Virtual DOM으로 렌더링 최적화 |
+| Material-UI | 5.0.0 | • 모던한 UI/UX 구현<br>• 반응형 디자인 구현 용이 |
+| React Router | 6.0.0 | • SPA 라우팅 구현<br>• 동적 페이지 전환 |
+
+### 추가 라이브러리
+| 라이브러리 | 용도 | 특징 |
+|------------|------|-------|
+| react-horizontal-scrolling-menu | 운동 목록 스크롤 | • 직관적인 가로 스크롤 UI<br>• 터치 인터랙션 지원 |
+| react-loader-spinner | 로딩 상태 표시 | • 사용자 경험 개선<br>• 다양한 로딩 애니메이션 |
+
+### API
+| API | 용도 | 제공 데이터 |
+|-----|------|-------------|
+| ExerciseDB (RapidAPI) | 운동 정보 | • 운동 상세 정보<br>• 운동 GIF<br>• 타겟 근육 정보 |
+| Youtube Search | 운동 영상 | • 관련 운동 영상<br>• 썸네일 및 메타 정보 |
 
 </br>
 
-## 4. 주요 기능
+## 3. 주요 기능
 
-### 4.1. 운동 검색창에 검색하기
+### 3.1. 운동 검색창에 검색하기
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/d11d3187-41d2-4918-9cf2-cb6a14338619">
 
 <details>
@@ -59,9 +74,9 @@ const handleSearch = async () => {
 </div>
 </details>
 
-- 사용자들은 이름, 자극 근육, 장비, 또는 부위에 따라 운동을 검색할 수 있습니다. 사용자의 검색 쿼리에 맞게 ExerciseDB API에서 데이터를 가져와서 원하는 운동을 필터링할 수 있습니다. 검색 기능을 처리하는 코드는 Search.jsx 컴포넌트에 있습니다. 
+- 사용자들은 운동 이름, 타겟 근육, 운동 장비, 또는 신체 부위를 기준으로 운동을 검색할 수 있습니다. ExerciseDB API를 통해 실시간으로 데이터를 필터링하여 사용자의 검색 의도에 맞는 결과를 제공합니다. 이 기능은 Search.jsx 컴포넌트에서 구현되어 있으며, 즉각적인 검색 결과를 제공합니다.
 
-### 4.2. 운동 부위 클릭으로 관련 운동 보기
+### 3.2. 운동 부위 클릭으로 관련 운동 보기
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/0d6c854b-9775-4627-9f17-34bcb40b6a80">
 
 <details>
@@ -81,9 +96,9 @@ const handleSearch = async () => {
 </div>
 </details>
 
-- 사용자가 특정 부위를 선택하면 그 부위에 대한 연관된 운동을 보여주는 기능입니다. BodyPart.jsx 파일에서 이 기능을 확인할 수 있습니다. Stack 컴포넌트는 각각의 운동 부위 카드를 나타내며, 이 카드에 onClick 핸들러를 설정하여 특정 카드가 클릭될 때 setBodyPart(item) 함수를 호출합니다. 이 함수는 상태를 변경하여 선택된 body part와 관련된 운동만 필터링됩니다.
+- 직관적인 UI를 통해 사용자가 원하는 신체 부위를 클릭하면 해당 부위에 특화된 운동 목록을 확인할 수 있습니다. BodyPart.jsx 컴포넌트에서 Material-UI의 Stack 컴포넌트를 활용하여 각 신체 부위를 카드 형태로 표현하였으며, 사용자의 클릭 이벤트에 반응하여 상태를 업데이트합니다. 선택된 부위에 따라 자동으로 스크롤이 이동하여 관련 운동 목록을 바로 확인할 수 있습니다.
 
-### 4.3. 운동 pagination
+### 3.3. 운동 pagination
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/0255d7fc-8a71-4a35-ae8b-df251ca8d4b4">
 
 <details>
@@ -121,9 +136,14 @@ onChange={paginate}
 </div>
 </details>
 
-- Pagination을 사용하여 사용자가 한 페이지에서 볼 수 있는 데이터의 양을 제한하고, 다음 또는 이전 버튼을 클릭하여 다른 페이지로 넘어갈 수 있도록 합니다.Exercises.jsx 파일에서 확인할 수 있는데, 처음에 currentPage, exercisesPerPage, 그리고 currentExercises라는 상태 변수들을 설정합니다. 여기서 currentExercises은 현재 페이지에 표시되어야 할 데이터입니다. 그리고 나서 <Pagination /> 컴포넌트의 onChange 속성으로 paginate 함수를 연결해줍니다. paginate 함수 내부에서는 새로운 페이지 번호(value)로 setCurrentPage(value)를 호출함으로써 현재 페이지 상태를 업데이트하고 새롭게 렌더링되도록 합니다.
+- Material-UI의 Pagination 컴포넌트를 활용하여 효율적인 데이터 탐색 기능을 구현했습니다. 한 페이지당 6개의 운동 정보를 표시하여 사용자가 쉽게 정보를 탐색할 수 있도록 하였으며, 페이지 전환 시 자동 스크롤 기능을 통해 사용자 경험을 개선했습니다.
 
-### 4.3. 운동 세부 정보 보기
+**기술적 구현:**
+- currentPage와 exercisesPerPage 상태를 통한 페이지네이션 관리
+- Material-UI Pagination 컴포넌트의 onChange 이벤트를 활용한 페이지 전환
+- 스무스 스크롤 기능으로 UX 개선
+
+### 3.4. 운동 세부 정보 보기
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/ade6d455-b535-45fd-ac9b-6ded2ede3068">
 <details>
 <summary>코드 보기</summary>
@@ -151,7 +171,7 @@ setExerciseDetail(exerciseDetailData);
 
 - 사용자가 운동 카드를 클릭하면 그 특정 운동에 대한 자세한 정보를 볼 수 있습니다. 운동 세부 정보에는 운동 이름, 대상 근육, 부위 및 필요한 장비가 포함됩니다. ExerciseDetail.jsx 컴포넌트가 이 정보를 가져오고 표시합니다.
   
-### 4.3. 특정 운동 관련 Youtube 비디오 보기
+### 3.5. 특정 운동 관련 Youtube 비디오 보기
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/50aba1cd-6791-4810-8aed-5cf44cc69559">
 
 <details>
@@ -168,7 +188,7 @@ setExerciseDetail(exerciseDetailData);
 
 - 특정 운동과 관련된 유투브 비디오를 시청할 수 있습니다. 비디오 썸네일과 제목을 웹페이지에 표기해 클릭하면 유투브 url로 새 페이지와 함께 열립니다. ExerciseVideos.jsx 컴포넌트가 이 역할을 합니다. 
   
-### 4.4. 유사한 운동 표시
+### 3.6. 유사한 운동 표시
 <img src="https://github.com/pouryourlove/FitLifeHub/assets/90593162/c0146e60-f006-492c-982c-8c8cded247cb">
 
 <details>
@@ -186,7 +206,7 @@ setExerciseDetail(exerciseDetailData);
 - 사용자는 대상 근육이나 장비와 관련된 유사한 운동들의 목록을 볼 수 있습니다. SimilarExercises.jsx 컴포넌트가 이 역할을 하고 Scrollbar.jsx 컴포넌트를 재활용해 목록을 표시합니다. Scrollbar.jsx는 재사용 되어 웹사이트의 일관성을 제공합니다.
   
 
-### 5. 문제 해결
+### 4. 문제 해결
 🔍 "react-horizontal-scrolling-menu" 라이브러리 사용 중 문제 발생
 
 - 문제 상황:
@@ -386,11 +406,14 @@ Scroll의 커스텀 CSS 파일 내부를 읽어본 결과 scroll container의 �
 🔍 운동 검색 후 카테고리 버튼이 작동안하는 오류
 [블로그 포스팅](https://velog.io/@pouryourlove/%EC%9A%B4%EB%8F%99-%EA%B2%80%EC%83%89-%ED%9B%84-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC-%EB%B2%84%ED%8A%BC-%EC%9E%91%EB%8F%99%EC%95%88%ED%95%98%EB%8A%94-%EC%98%A4%EB%A5%98#%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC-%EC%B4%88%EA%B8%B0%ED%99%94)
 
-## 6. 성능 최적화
+🔍 모든 운동이 10개만 표시되는 오류
+[블로그 포스팅](https://velog.io/@pouryourlove/모든-운동이-10개만-표시되는-오류)
+
+## 5. 성능 최적화
 - 이미지 레이지 로딩을 구현하여 초기 로딩 속도를 개선했습니다.
 - 페이지네이션을 구현하여 대량의 데이터를 효율적으로 관리하고 렌더링했습니다.
 
-## 7. 회고 / 느낀점
+## 6. 회고 / 느낀점
 
 처음으로 rapid API와 material UI를 사용한 이번 프로젝트는 매우 유익한 경험이었습니다. 평소에 들어보기만 하던 기술들을 실제로 적용해보며 새로운 지식을 습득할 수 있었습니다. 더욱이 이번 프로젝트는 제가 개인적으로 관심 있는 헬스 주제였기 때문에, 열정적으로 참여할 수 있었습니다.
 
@@ -398,7 +421,7 @@ API를 활용하여 실제 데이터를 웹 페이지에 반영하는 과정은 
 
 이러한 경험은 앞으로 프로젝트에서 오류가 발생했을 때 차근차근 디버깅하여 문제를 해결하는 능력을 기르는 계기가 되었다고 생각합니다.
 
-## 8.컴포넌트 도식화
+## 7.컴포넌트 도식화
 
 ```
 Home
